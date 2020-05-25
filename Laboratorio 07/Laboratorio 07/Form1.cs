@@ -20,6 +20,7 @@ namespace Laboratorio_07
         string operador = "";
         int condicion = 1;
         int inicio = 0;
+        int hist = 1;
 
 
         public Form1()
@@ -131,7 +132,9 @@ namespace Laboratorio_07
             operador = "";
             condicion = 1;
             textBoxEcuaciones.Text = "0";
+            listHistorial.Items.Clear();
             inicio = 0;
+            hist = 1;
         }
 
         private void botonCircularDel_Click(object sender, EventArgs e)
@@ -296,11 +299,18 @@ namespace Laboratorio_07
         {            
             inicio = 1;
             segundo = double.Parse(textBoxEcuaciones.Text);
+            string temp = (primero + operador + segundo + "=");
             resultado();
+            temp += ans;
+            listHistorial.Items.Add(temp);
             textBoxEcuaciones.Text = ans.ToString();
             if (condicion == 0)
             {
                 operador = "";
+            }
+            else
+            {
+                listHistorial.Items.Remove(temp);
             }
         }
 
@@ -312,9 +322,22 @@ namespace Laboratorio_07
             botonCircularMultiplicar.BackColor = Color.DarkOrange;
             botonCircularDividir.BackColor = Color.DarkOrange;
             botonCircularExponente.BackColor = Color.DarkOrange;
+            listHistorial.ForeColor = Color.Black;
             textBoxEcuaciones.Clear();
         }
 
-        
+        private void botonCircularHist_Click(object sender, EventArgs e)
+        {
+            if (hist==-1)
+            {
+                listHistorial.ForeColor = Color.Black;
+            }
+            else
+            {
+                listHistorial.ForeColor = Color.White;
+            }
+            
+            hist = hist * -1;
+        }
     }
 }

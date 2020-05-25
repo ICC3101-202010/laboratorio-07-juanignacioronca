@@ -141,6 +141,7 @@
             this.botonCircularHist.TabIndex = 21;
             this.botonCircularHist.Text = "Rec";
             this.botonCircularHist.UseVisualStyleBackColor = false;
+            this.botonCircularHist.Click += new System.EventHandler(this.botonCircularHist_Click);
             // 
             // botonCircularDel
             // 
